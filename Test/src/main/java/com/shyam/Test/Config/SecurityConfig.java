@@ -49,7 +49,7 @@ public class SecurityConfig {
         http.csrf().disable().
                 authorizeHttpRequests((authorize)->
                         authorize.requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll().
-                                //requestMatchers(HttpMethod.GET,"/api/**").permitAll().
+                                requestMatchers(HttpMethod.GET,"/api/auth/**").permitAll().
                                 anyRequest().authenticated())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

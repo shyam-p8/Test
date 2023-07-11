@@ -4,18 +4,17 @@ package com.shyam.Test.Controller;
 import com.shyam.Test.Dto.JWTAuthResponse;
 import com.shyam.Test.Dto.LoginDto;
 import com.shyam.Test.Dto.RegisterDto;
+import com.shyam.Test.Entity.User;
 import com.shyam.Test.Service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpResponse;
+import java.util.List;
 
 
 @RestController
@@ -50,6 +49,12 @@ public class HomePage {
       return new  ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    // this api for get the list of all registered user
+     @GetMapping("/alluser")
+        public ResponseEntity<List<User>> allUserList()
+        {
+           return ResponseEntity.ok(authService.allUser());
+        }
 
 
 
