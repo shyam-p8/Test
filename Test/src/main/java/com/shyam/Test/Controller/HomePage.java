@@ -49,6 +49,16 @@ public class HomePage {
       return new  ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+
+    //@PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUser()
+    {
+
+        return ResponseEntity.ok(authService.allUser());
+
+    }
+
     // this api for get the list of all registered user
      @GetMapping("/alluser")
         public ResponseEntity<List<User>> allUserList()
