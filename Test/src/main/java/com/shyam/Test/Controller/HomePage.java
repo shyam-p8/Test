@@ -50,6 +50,7 @@ public class HomePage {
     }
 
     // this api for get the list of all registered user
+
      @GetMapping("/alluser")
         public ResponseEntity<List<User>> allUserList()
         {
